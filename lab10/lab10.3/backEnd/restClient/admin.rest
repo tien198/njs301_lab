@@ -1,0 +1,29 @@
+###
+GET http://localhost:5000/admin/products HTTP/1.1
+
+###
+GET http://localhost:5000/admin/product/1 HTTP/1.1
+
+###
+POST http://localhost:5000/admin/add-product
+Content-Type: application/json
+
+{
+    "title":"New Product",
+    "imageUrl":"url img img img img",
+    "description":"description",
+    "price":"12"
+}
+
+###
+POST http://localhost:5000/admin/edit-product
+Content-Type: application/json
+
+{
+    "prodId": 1,
+    "title": "upt title",
+     "price": "upt price",
+      "imageUrl": "upt img", 
+      "description": "upt "
+
+}

@@ -1,0 +1,9 @@
+POST http://localhost:5000/admin/add-product
+Content-Type: application/json
+
+{
+    "title":"New Product",
+    "imageUrl":"url img img img img",
+    "description":"description",
+    "price":"12"
+}

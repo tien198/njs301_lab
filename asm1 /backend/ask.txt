@@ -1,0 +1,9 @@
+Em chào anh ạ!
+Em xin nhờ anh giới thiệu vài vs code extensions hỗ trợ code Node vs Express nhanh hơn ạ!
+Như dòng này:
+const path = require('path')
+thì liệu có extension nào rút ngắn những ký tự phải nhập không ạ.
+-
+Ngoài ra thì về khác biệt kiến trúc giữa Node và Java ạ. Node dùng Event Driven Architecture. Còn Java thì dùng gì vậy ạ.
+Nếu lượng truy cập đồng thời quá lớn vượt quá khả năng tiếp nhận của Single Thread thì phải làm sao để khắc phục ạ.
+Em cảm ơn anh nhiều ạ!
