@@ -1,0 +1,28 @@
+GET http://localhost:5000/ HTTP/1.1
+
+
+###
+GET http://localhost:5000/cart HTTP/1.1
+
+
+###
+POST http://localhost:5000/cart HTTP/1.1
+Content-Type: application/json
+
+{
+    "productId": "67d1bc9be1e1412e8ade5f9d"
+}
+
+
+###
+GET http://localhost:5000/orders HTTP/1.1
+
+
+###
+POST http://localhost:5000/orders HTTP/1.1
+Content-Type: application/json
+
+{
+    "productId": "67d1bc9be1e1412e8ade5f9d"
+}
+

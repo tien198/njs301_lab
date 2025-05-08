@@ -3,7 +3,7 @@ const { log, error } = require('console')
 const Product = require('../models/product')
 
 exports.getProds = (req, res, next) => {
-    Product.findAll()
+    Product.find()
         .then(prods => res.send(prods))
 }
 
