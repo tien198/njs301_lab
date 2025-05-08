@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "module": "NodeNext",
+        "rootDir": "src",
+        "outDir": "dist",
+        "lib": [
+            "es2022",
+        ],
+        "strict": true,
+        ///
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "verbatimModuleSyntax": true,
+        // "erasableSyntaxOnly": true
+    },
+    "include": [
+        "d.ts",
+    "src"        
+    ]
+}

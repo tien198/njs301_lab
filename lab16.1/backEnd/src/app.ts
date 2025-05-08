@@ -1,20 +1,25 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const { log, error } = require('console')
-const Mongoose = require('mongoose')
+import './.d.ts/request.d.ts'
 
-// const { client, productCollection, userCollection } = require('./utils/database')
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import { log, error } from 'console';
+import Mongoose from 'mongoose';
 
-const User = require('./models/user')
+// import { client, productCollection, userCollection } from './utils/database';
 
-const shopRoutes = require('./routes/shop')
-const adminRoutes = require('./routes/admin')
+import User from './models/mongooseModels/User.js'; 
+
+import shopRoutes from './routes/shop.js';
+import adminRoutes from './routes/admin.js';
+
+
 
 const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
+
 
 app.use((req, res, next) => {
     User.find()
@@ -27,7 +32,11 @@ app.use((req, res, next) => {
             res.status(400).send('Could\'t to find user')
         })
 })
-app.get('/favicon.ico', (req, res) => res.status(204).end())
+
+
+app.get('/favicon.ico', (req, res) => {
+    res.status(204).end()
+})
 
 app.use('/', shopRoutes)
 

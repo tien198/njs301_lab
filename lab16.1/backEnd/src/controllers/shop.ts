@@ -1,22 +1,24 @@
-const { log, error } = require('console')
+import type { Request, Response, NextFunction } from 'express'
 
-const Product = require('../models/product')
+import { log, error } from 'console'
 
-exports.getProds = (req, res, next) => {
+import Product from '../models/mongooseModels/Product.js'
+
+export function getProds(req: Request, res: Response, next: NextFunction) {
     Product.find()
         .then(prods => res.send(prods))
 }
 
-exports.getCart = (req, res, next) => {
+export function getCart(req: Request, res: Response, next: NextFunction) {
     const user = req.user
-    user.getCart()
+    user!.getCart()
         .then(cart =>
             res.status(200).send(cart)
         )
-        .catch(err => res.status(400).send(err))
+        .catch((err: any) => res.status(400).send(err))
 }
 
-exports.postCart = (req, res, next) => {
+export function postCart(req: Request, res: Response, next: NextFunction) {
     const { prodId } = req.body
     const user = req.user
 
@@ -24,7 +26,7 @@ exports.postCart = (req, res, next) => {
         .then(prod => {
             if (!prod)
                 throw Error(`Not found product with id: ${prodId}`)
-            return user.addToCart(prod, 1)
+            return user!.addToCart(prod, 1)
         })
         .then(_ =>
             res.status(200).send(`Added to cart product with id: ${prodId}`)
@@ -35,21 +37,26 @@ exports.postCart = (req, res, next) => {
         })
 }
 
-exports.getOrders = (req, res, next) => {
+export function getOrders(req: Request, res: Response, next: NextFunction) {
     const user = req.user
-    user.getOrders()
+    user!.getOrders()
         .then(orders =>
             res.status(200).send(orders)
         )
-        .catch(err => res.status(400).send(err))
+        .catch((err: any) => res.status(400).send(err))
 }
 
-exports.postOrder = (req, res, next) => {
+export function postOrder(req: Request, res: Response, next: NextFunction) {
     const user = req.user
-    user.addOrder()
+    user!.addOrder()
         .then(() => res.status(200).send(`Add order successfully! cart'll be reseted!`))
-        .catch(err => {
+        .catch((err: any) => {
             error(err)
             res.status(400).send(err)
         })
+}
+
+
+export default {
+    getProds, getCart, postCart, getOrders, postOrder
 }

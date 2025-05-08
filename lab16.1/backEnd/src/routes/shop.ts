@@ -1,8 +1,9 @@
-const router = require('express').Router()
+import { Router } from 'express'
 const { log } = require('console')
 
-const shopController = require('../controllers/shop')
+const shopController = require('../controllers/shop.js')
 
+const router = Router()
 router.get('/', shopController.getProds)
 
 router.get('/cart', shopController.getCart)
@@ -11,4 +12,4 @@ router.post('/cart', shopController.postCart)
 router.get('/orders', shopController.getOrders)
 router.post('/order', shopController.postOrder)
 
-module.exports = router
+export default router

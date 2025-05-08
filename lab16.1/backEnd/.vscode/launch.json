@@ -11,8 +11,11 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/app.js",
-            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}/app.ts",
+            "runtimeExecutable": "node",
+            "runtimeArgs": [
+                "--experimental-transform-types"
+            ],
             "console": "integratedTerminal"
         }
     ]

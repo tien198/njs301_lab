@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-exports.mainPath = () => path.dirname(require.main.filename)
+exports.mainPath = () => path.dirname(require.main!.filename)
 
 exports.prodsDataPath = () => this.mainPath() + '/data/products.json'
 
