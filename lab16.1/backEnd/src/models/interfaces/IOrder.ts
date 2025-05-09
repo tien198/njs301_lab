@@ -1,7 +1,13 @@
-import {Document} from 'mongoose'
+import { Document } from 'mongoose'
+import type IProduct from './IProduct.ts'
 
-export default interface IOrder extends Document{
-    items:[]
-    total:number
+interface IOrderItem {
+    product: IProduct
+    quantity: Number
+}
+
+export default interface IOrder extends Document {
+    items: IOrderItem[]
+    total: number
     user: {}
 }

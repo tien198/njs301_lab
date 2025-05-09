@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Model, Schema, Document } from 'mongoose'
 import { cloneDeep } from 'lodash'
 
 import Order from './Order.js'
@@ -69,8 +69,8 @@ const userSchema = new Schema<IUser>({
                     })
                 })
                 .then(_ => {
-                    this.cart = {}
-                    return this.updateOne({ cart: {} })
+                    this.cart = { items: [], total: 0 }
+                    return this.save()
                 })
         },
 
@@ -83,4 +83,6 @@ const userSchema = new Schema<IUser>({
 
 // }
 
-export default mongoose.model<IUser>('User', userSchema)
+const UserModel: Model<IUser> = mongoose.model<IUser>('User', userSchema)
+
+export default UserModel

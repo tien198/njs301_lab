@@ -1,7 +1,7 @@
 import path from 'path'
 
-exports.mainPath = () => path.dirname(require.main!.filename)
+export const mainPath = () => path.dirname(require.main!.filename)
 
-exports.prodsDataPath = () => this.mainPath() + '/data/products.json'
+export const prodsDataPath = () => mainPath() + '/data/products.json'
 
-exports.cartsDataPath = () => this.mainPath() + '/data/carts.json'
+export const cartsDataPath = () => mainPath() + '/data/carts.json'

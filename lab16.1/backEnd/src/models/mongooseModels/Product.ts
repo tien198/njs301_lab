@@ -1,12 +1,14 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Model, Schema } from 'mongoose'
 
-import type IProduct  from '../interfaces/IProduct.ts'
+import type IProduct from '../interfaces/IProduct.ts'
 
 const productSchema = new Schema<IProduct>({
-    title: String,
-    price: Number,
-    imageUrl: String,
-    description: String
+    title: { type: String, require: true },
+    price: { type: Number, require: true },
+    imageUrl: { type: String, require: true },
+    description: { type: String, require: true }
 })
 
-export default mongoose.model<IProduct>('Product', productSchema)
+const ProductModel: Model<IProduct> = mongoose.model<IProduct>('Product', productSchema)
+
+export default ProductModel
