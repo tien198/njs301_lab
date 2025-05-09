@@ -8,10 +8,11 @@ import Mongoose from 'mongoose';
 
 // import { client, productCollection, userCollection } from './utils/database';
 
-import User from './models/mongooseModels/User.js'; 
+import User from './models/mongooseModels/User.ts';
 
 import shopRoutes from './routes/shop.js';
 import adminRoutes from './routes/admin.js';
+import authRoutes from './routes/auth.js';
 
 
 
@@ -21,25 +22,12 @@ app.use(cors())
 app.use(bodyParser.json())
 
 
-app.use((req, res, next) => {
-    User.find()
-        .then(users => {
-            req.user = users[0]
-            next()
-        })
-        .catch(err => {
-            error(err)
-            res.status(400).send('Could\'t to find user')
-        })
-})
-
-
 app.get('/favicon.ico', (req, res) => {
     res.status(204).end()
 })
 
 app.use('/', shopRoutes)
-
+app.use('/aut', authRoutes)
 app.use('/admin', adminRoutes)
 
 

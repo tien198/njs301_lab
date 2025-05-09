@@ -15,6 +15,7 @@ interface ICart {
 export default interface IUser extends Document {
     name: string
     email: string
+    password: string
     cart: ICart
     getCart(): Promise<ICart>
     addToCart(prod: IProduct, quantity: number): Promise<Document<IUser>>

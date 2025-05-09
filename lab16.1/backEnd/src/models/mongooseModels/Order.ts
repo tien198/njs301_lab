@@ -23,6 +23,6 @@ const orderSchema = new Schema<IOrder>({
     }
 })
 
-const OrderModel: Model<IOrder> = mongoose.model<IOrder>('Order', orderSchema)
+const OrderModel = mongoose.model<IOrder>('Order', orderSchema)
 
 export default OrderModel

@@ -1,6 +1,9 @@
 import mongoose, { Model, Schema } from 'mongoose'
 
+import type { SchemaDefinition } from 'mongoose'
 import type IProduct from '../interfaces/IProduct.ts'
+
+
 
 const productSchema = new Schema<IProduct>({
     title: { type: String, require: true },

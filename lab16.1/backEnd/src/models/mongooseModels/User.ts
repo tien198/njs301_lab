@@ -1,21 +1,18 @@
-import mongoose, { Model, Schema, Document } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { cloneDeep } from 'lodash'
 
 import Order from './Order.js'
 
+import type { Model, SchemaDefinition, SchemaOptions } from 'mongoose'
 import type IUser from '../interfaces/IUser.ts'
-import type IProduct from '../interfaces/IProduct.js'
+import type IProduct from '../interfaces/IProduct.ts'
+
 
 
 const userSchema = new Schema<IUser>({
-    name: {
-        type: String,
-        require: true
-    },
-    email: {
-        type: String,
-        require: true
-    },
+    name: { type: String, require: true },
+    email: { type: String, require: true },
+    password: { type: String, required: true },
     cart: {
         items: [
             {
@@ -79,9 +76,6 @@ const userSchema = new Schema<IUser>({
         }
     }
 })
-// userSchema.methods = {
-
-// }
 
 const UserModel: Model<IUser> = mongoose.model<IUser>('User', userSchema)
 
