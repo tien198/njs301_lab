@@ -26,20 +26,27 @@ import type IErrorRes from './models/interfaces/errorResponse.ts';
 
 const app = express()
 
+
 app.use(cors())
 app.use(bodyParser.json())
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    next()
+  })
 
 app.get('/favicon.ico', (req, res) => { res.status(204).end() })
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+  next()
+})
 
 
 app.use(session)
 
 
 
+app.use(authRoutes)
 app.use('/', shopRoutes)
-app.use('/aut', authRoutes)
 app.use('/admin', adminRoutes)
 
 

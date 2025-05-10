@@ -14,7 +14,8 @@
             "program": "${workspaceFolder}/src/app.ts",
             "runtimeExecutable": "node",
             "runtimeArgs": [
-                "--experimental-transform-types"
+                "--experimental-transform-types",
+                "--trace-warnings"
             ],
             "console": "integratedTerminal"
         }
