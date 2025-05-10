@@ -1,15 +1,14 @@
 import { Router } from 'express'
-const { log } = require('console')
 
-const shopController = require('../controllers/shop.js')
+import shopCtrl from '../controllers/shop.ts'
 
 const router = Router()
-router.get('/', shopController.getProds)
+router.get('/', shopCtrl.getProds)
 
-router.get('/cart', shopController.getCart)
-router.post('/cart', shopController.postCart)
+router.get('/cart', shopCtrl.getCart)
+router.post('/cart', shopCtrl.postCart)
 
-router.get('/orders', shopController.getOrders)
-router.post('/order', shopController.postOrder)
+router.get('/orders', shopCtrl.getOrders)
+router.post('/order', shopCtrl.postOrder)
 
 export default router

@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express'
 
 import { log, error } from 'console'
 
-import Product from '../models/mongooseModels/Product.js'
+import Product from '../models/mongooseModels/product.ts'
 
 export function getProds(req: Request, res: Response, next: NextFunction) {
     Product.find()

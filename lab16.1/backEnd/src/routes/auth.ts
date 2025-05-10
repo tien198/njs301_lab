@@ -1,10 +1,14 @@
 import {Router} from 'express'
 
+import authCtrl from '../controllers/auth.ts'
+
 const router = Router()
 
-router.post('', (req,res,next)=>{
-    req.body
-})
+// req.body = { email, password }
+router.post('/login', authCtrl.login)
+
+// req.body = { email, password, confirmPassword }
+router.post('/sign-up', authCtrl.signup)
 
 
 

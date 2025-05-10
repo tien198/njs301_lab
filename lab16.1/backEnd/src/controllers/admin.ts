@@ -1,7 +1,8 @@
-import type { Request, Response, NextFunction, Application } from 'express'
+import type { Request, Response, NextFunction } from 'express'
+
 
 import { error } from 'console';
-import Product from '../models/mongooseModels/Product.js';
+import Product from '../models/mongooseModels/product.ts';
 
 
 

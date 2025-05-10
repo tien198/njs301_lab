@@ -1,5 +1,5 @@
 import { Document } from 'mongoose'
-import type IProduct from './IProduct.ts'
+import type IProduct from './product.ts'
 
 interface IOrderItem {
     product: IProduct

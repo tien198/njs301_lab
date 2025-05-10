@@ -1,6 +1,6 @@
 import type { Document, ObjectId, UpdateResult } from 'mongoose'
-import type IProduct from './IProduct.ts'
-import type IOrder from './IOrder.ts'
+import type IProduct from './product.ts'
+import type IOrder from './order.ts'
 
 export interface ICartItem {
     product: ObjectId
@@ -12,11 +12,14 @@ interface ICart {
     total: number
 }
 
-export default interface IUser extends Document {
+export interface IUserInfor {
     name: string
     email: string
     password: string
     cart: ICart
+}
+
+export default interface IUser extends Document, IUserInfor {
     getCart(): Promise<ICart>
     addToCart(prod: IProduct, quantity: number): Promise<Document<IUser>>
     addOrder(): Promise<Document<IUser>>

@@ -1,19 +1,27 @@
-import './.d.ts/request.d.ts'
+import './.d.ts/requestHandler.d.ts'
 
 import express from 'express';
+import dotenv from 'dotenv'
+dotenv.config()
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { log, error } from 'console';
+import { error } from 'console';
 import Mongoose from 'mongoose';
 
-// import { client, productCollection, userCollection } from './utils/database';
 
-import User from './models/mongooseModels/User.ts';
+// Middlewares
+import session from './middlewares/session.ts'
 
-import shopRoutes from './routes/shop.js';
-import adminRoutes from './routes/admin.js';
-import authRoutes from './routes/auth.js';
 
+
+import shopRoutes from './routes/shop.ts';
+import adminRoutes from './routes/admin.ts';
+import authRoutes from './routes/auth.ts';
+
+
+// Types
+import type { Request, Response, NextFunction } from 'express'
+import type IErrorRes from './models/interfaces/errorResponse.ts';
 
 
 const app = express()
@@ -22,17 +30,31 @@ app.use(cors())
 app.use(bodyParser.json())
 
 
-app.get('/favicon.ico', (req, res) => {
-    res.status(204).end()
-})
+app.get('/favicon.ico', (req, res) => { res.status(204).end() })
+
+
+
+app.use(session)
+
+
 
 app.use('/', shopRoutes)
 app.use('/aut', authRoutes)
 app.use('/admin', adminRoutes)
 
 
-const local = 'mongodb://127.0.0.1:27017/shopLab?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.9'
-Mongoose.connect(local)
+app.use((error: Error & IErrorRes, req: Request, res: Response, nex: NextFunction) => {
+    const errorRes: IErrorRes = {
+        message: error.message ?? 'Server Internal Error!',
+        status: error.status ?? 500,
+        errors: error.errors
+    }
+    res.status(500).json(errorRes)
+})
+
+
+
+Mongoose.connect(process.env.MONGODB_URI!)
     .then(_ => {
         app.listen(5000)
     }
